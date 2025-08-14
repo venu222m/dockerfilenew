@@ -26,7 +26,8 @@ steps:
     az acr login --name $(ACR_NAME)
 
     echo "Building Docker image..."
-    docker build -t $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(IMAGE_TAG) .
+    docker build -f path/to/Dockerfile -t $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(IMAGE_TAG) .
+
 
     echo "Pushing Docker image to ACR..."
     docker push $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(IMAGE_TAG)
