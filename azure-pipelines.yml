@@ -10,7 +10,7 @@ pool:
   name: devops  # your self-hosted pool name
 
 variables:
-  ACR_NAME: 'myacrname123'        # Replace with your ACR name
+  ACR_NAME: 'myacrregistry4915'        # Replace with your ACR name
   IMAGE_NAME: 'myapp'
   IMAGE_TAG: '$(Build.BuildId)'
 
