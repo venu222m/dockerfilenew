@@ -15,6 +15,10 @@ variables:
   IMAGE_TAG: '$(Build.BuildId)'
 
 steps:
+# Step 1: Pull your repo code (including Dockerfile)
+- checkout: self
+
+# Step 2: Build & Push Docker image
 - script: |
     echo "Logging into Azure..."
     az login --service-principal \
@@ -26,8 +30,7 @@ steps:
     az acr login --name $(ACR_NAME)
 
     echo "Building Docker image..."
-    docker build -f path/to/Dockerfile -t $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(IMAGE_TAG) .
-
+    docker build -f Dockerfile -t $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(IMAGE_TAG) .
 
     echo "Pushing Docker image to ACR..."
     docker push $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(IMAGE_TAG)
